@@ -1,5 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Globalization;
+using.System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -19,8 +26,6 @@ namespace TrashCollector.Models
         public string pickUpDay { get; set; }
 
         public virtual Schedule schedule { get; set; }
-
-        public async Task<DeclaresIdentity> GenerateUserIdentityAsync(UserMan)
-        
+  
     }
 }

@@ -13,6 +13,7 @@ namespace TrashCollector.Models
         public string PickUpDays { get; set; }
         public string ScheduledDays { get; set; }
         public string AdditionalDay { get; set; }
+        public decimal TrashCost { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }
