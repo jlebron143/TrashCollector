@@ -1,0 +1,42 @@
+﻿@model TrashCollector.Models.Schedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PickUpDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickUpDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScheduledDays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScheduledDays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdditionalDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdditionalDay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
