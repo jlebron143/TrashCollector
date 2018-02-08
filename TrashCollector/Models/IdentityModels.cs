@@ -9,14 +9,7 @@ namespace TrashCollector.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string StreetAddress { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
-
-        public virtual Schedule Schedule { get; set; }
+     
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -43,5 +36,9 @@ namespace TrashCollector.Models
         public System.Data.Entity.DbSet<TrashCollector.Models.Workers> Workers { get; set; }
 
         public System.Data.Entity.DbSet<TrashCollector.Models.Schedule> Schedules { get; set; }
+
+        public System.Data.Entity.DbSet<TrashCollector.Models.DriverRoute> DriverRoutes { get; set; }
+
+        public System.Data.Entity.DbSet<TrashCollector.Models.Pricing> Pricings { get; set; }
     }
 }

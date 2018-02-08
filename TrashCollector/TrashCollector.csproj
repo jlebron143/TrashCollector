@@ -197,8 +197,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DriverRoutesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PricingsController.cs" />
     <Compile Include="Controllers\SchedulesController.cs" />
     <Compile Include="Controllers\WorkersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -211,8 +213,10 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\DriverRoute.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pricing.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Workers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -293,6 +297,16 @@
     <Content Include="Views\Schedules\Details.cshtml" />
     <Content Include="Views\Schedules\Edit.cshtml" />
     <Content Include="Views\Schedules\Index.cshtml" />
+    <Content Include="Views\DriverRoutes\Create.cshtml" />
+    <Content Include="Views\DriverRoutes\Delete.cshtml" />
+    <Content Include="Views\DriverRoutes\Details.cshtml" />
+    <Content Include="Views\DriverRoutes\Edit.cshtml" />
+    <Content Include="Views\DriverRoutes\Index.cshtml" />
+    <Content Include="Views\Pricings\Create.cshtml" />
+    <Content Include="Views\Pricings\Delete.cshtml" />
+    <Content Include="Views\Pricings\Details.cshtml" />
+    <Content Include="Views\Pricings\Edit.cshtml" />
+    <Content Include="Views\Pricings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
