@@ -14,6 +14,8 @@ namespace TrashCollector.Models
         public string ScheduledDays { get; set; }
         public string AdditionalDay { get; set; }
         public decimal TrashCost { get; set; }
+        public DateTime? VacationModeStart { get; set; }
+        public DateTime? VacationModeEnd { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }
