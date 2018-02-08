@@ -6,7 +6,7 @@ using System.Web;
 
 namespace TrashCollector.Models
 {
-    public class ViewAccounts
+    public class ViewAccountsModel
     {
        [Key]
        [Required]
@@ -64,6 +64,22 @@ namespace TrashCollector.Models
 
     }
 
+    public class loginModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name ="Password")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        public bool SavePassword { get; set; }
+
+    }
+
     public class ForgottenPassword
     {
         [Required]
@@ -71,5 +87,31 @@ namespace TrashCollector.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class ResetPasswordModel
+    {
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(150, ErrorMessage = "Your{0} must be at least {2} characters long .")]
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
+        [Display(Name = "Password Confirmation")]
+        [Compare("Password", ErrorMessage = "Sorry, This is not a match.")]
+        [DataType(DataType.Password)]
+        public string PasswordConfirmation { get; set; }
+
+        public string Code { get; set; }
+
+
+
+    }
+
+
 
 }
