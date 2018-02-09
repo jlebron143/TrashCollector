@@ -151,7 +151,18 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Address = model.Address,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Zip = model.Zip,
+                    EnrollDate = DateTime.Now,
+                    StartDate = new DateTime(2000, 1, 1),
+                    EndDate = new DateTime(2000, 1, 1)
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

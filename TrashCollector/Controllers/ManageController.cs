@@ -50,7 +50,58 @@ namespace TrashCollector.Controllers
             }
         }
 
+        // GET: /Manage/setVacationDays
+        public ActionResult SetVacationDays()
+        {
+            return View();
+        }
+
+        //POST: /Manage/SetVacationDays
+        [HttpPost]
+        public async Task<ActionResult> SetVacationDays(SetVacationDaysViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                user.StartDate = Convert.ToDateTime(model.StartDate);
+                user.EndDate = Convert.ToDateTime(model.EndDate);
+                var result = await UserManager.UpdateAsync(user);
+            }
+            return RedirectToAction("SetVacationDaysConfirmation", "Manage");
+        }
+        // GET: Manage/SetVacationDaysConfirmation
+        public ActionResult SetVacationDaysConfirmation()
+        {
+            return View();
+        }
+
+
+
+        // GET: /Manage/SetPickupDays
+        public ActionResult SetPickupDays()
+        {
+            return View();
+        }
+        [HttpPost]
+        // POST: /Manage/SetPickupDays
+        public async Task<ActionResult> SetPickupDays(SetPickupDaysViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                user.Pickupday = model.PickupDay;
+                var result = await UserManager.UpdateAsync(user);
+            }
+            return RedirectToAction("SetPickupDaysConfirmation", "Manage");
+        }
+
+        // GET: Manage/SetPickupDaysConfirmation
+        public ActionResult SetPickupDaysConfirmation()
+        {
+            return View();
+        }
         //
+        // GET: /Manage/Index
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
@@ -333,7 +384,7 @@ namespace TrashCollector.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -383,7 +434,16 @@ namespace TrashCollector.Controllers
             RemovePhoneSuccess,
             Error
         }
-
-#endregion
+        public enum DaysOfWeek
+        {
+            Sunday,
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday
+        }
+        #endregion
     }
 }

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using System;
 
 namespace TrashCollector.Models
 {
@@ -38,6 +39,25 @@ namespace TrashCollector.Models
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
+    public class SetPickupDaysViewModel
+    {
+        [Required]
+        public DayOfWeek PickupDay { get; set; }
+    }
+    public class SetVacationDaysViewModel
+    {
+        //[DataType(DataType.DateTime)]
+        //[Display(Name = "Start Date")]
+        //public DateTime StartDate;
+
+        //[DataType(DataType.DateTime)]
+        //[Display(Name = "End Date")]
+        //public DateTime EndDate;
+        public string EndDate { get; set; }
+        public string StartDate { get; set; }
+    }
+
+ 
 
     public class ChangePasswordViewModel
     {

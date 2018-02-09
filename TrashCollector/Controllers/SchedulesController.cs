@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -17,7 +18,14 @@ namespace TrashCollector.Controllers
         // GET: Schedules
         public ActionResult Index()
         {
-            return View(db.Schedules.ToList());
+            string userid = User.Identity.GetUserId();
+            Schedule schedule = db.Schedules.Where(x => x.ApplicationUser.Id == userid).First();
+            if (schedule.VacationModeStart < DateTime.Now)
+            {
+                schedule.VacationModeStart = null;
+                schedule.VacationModeEnd = null;
+            }
+            return View(db.Schedules.Where(x => x.ApplicationUser.Id == userid).ToList());
         }
 
         // GET: Schedules/Details/5
@@ -41,15 +49,25 @@ namespace TrashCollector.Controllers
             return View();
         }
 
+
         // POST: Schedules/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ScheduleID,PickUpDays,ScheduledDays,AdditionalDay")] Schedule schedule)
+        public ActionResult Create([Bind(Include = "ScheduleID,AdditionalDay,PickUpDay,VacationModeStart,VacationModeEnd, TrashCosts,")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
+
+                string userID = User.Identity.GetUserId();
+                ApplicationUser user = db.Users.Find(userID);
+                schedule.ApplicationUser = user;
+                schedule.TrashCost = 4 * 25;
+                schedule.PickUpDays = 4;
+                schedule.VacationModeStart = Convert.ToDateTime("01/01/2018");
+                schedule.VacationModeEnd = Convert.ToDateTime("01/01/2018");
+                db.Schedules.Add(schedule);
                 db.Schedules.Add(schedule);
                 db.SaveChanges();
                 return RedirectToAction("Index");
