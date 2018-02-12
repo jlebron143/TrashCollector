@@ -41,14 +41,16 @@ namespace TrashCollector.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<TrashCollector.Models.Customer> Customers { get; set; }
+        public System.Data.Entity.DbSet<TrashCollector.Models.CustomerViewModel> Customers { get; set; }
 
         public System.Data.Entity.DbSet<TrashCollector.Models.Workers> Workers { get; set; }
 
         public System.Data.Entity.DbSet<TrashCollector.Models.Schedule> Schedules { get; set; }
 
-        public System.Data.Entity.DbSet<TrashCollector.Models.DriverRoute> DriverRoutes { get; set; }
+        
 
         public System.Data.Entity.DbSet<TrashCollector.Models.Pricing> Pricings { get; set; }
+
+        public System.Data.Entity.DbSet<TrashCollector.Models.MapPickupModel> MapPickupModels { get; set; }
     }
 }

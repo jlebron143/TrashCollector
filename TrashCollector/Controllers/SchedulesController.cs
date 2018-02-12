@@ -19,13 +19,24 @@ namespace TrashCollector.Controllers
         public ActionResult Index()
         {
             string userid = User.Identity.GetUserId();
-            Schedule schedule = db.Schedules.Where(x => x.ApplicationUser.Id == userid).First();
+            List<Schedule> Schedules = db.Schedules.Where(x => x.ApplicationUser.Id == userid).ToList();
+            if(Schedules.Count == 0)
+            {
+                //this means there is no schedule for this user
+                return View(Schedules);
+            }
+            Schedule schedule = db.Schedules.Where(x => x.ApplicationUser.Id == userid).FirstOrDefault();
+            if(schedule.GetType() == null)
+            {
+                // this means there is no schedule
+                return View();
+            }
             if (schedule.VacationModeStart < DateTime.Now)
             {
                 schedule.VacationModeStart = null;
                 schedule.VacationModeEnd = null;
             }
-            return View(db.Schedules.Where(x => x.ApplicationUser.Id == userid).ToList());
+            return View(Schedules);
         }
 
         // GET: Schedules/Details/5
@@ -48,7 +59,6 @@ namespace TrashCollector.Controllers
         {
             return View();
         }
-
 
         // POST: Schedules/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

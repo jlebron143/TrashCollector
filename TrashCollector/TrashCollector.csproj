@@ -197,7 +197,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
-    <Compile Include="Controllers\DriverRoutesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PricingsController.cs" />
@@ -210,15 +209,20 @@
     <Compile Include="Migrations\201802071812034_createdcustomertable.Designer.cs">
       <DependentUpon>201802071812034_createdcustomertable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802121824218_added tables.cs" />
+    <Compile Include="Migrations\201802121824218_added tables.Designer.cs">
+      <DependentUpon>201802121824218_added tables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationRole.cs" />
-    <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\DriverRoute.cs" />
+    <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MapPickupModel.cs" />
+    <Compile Include="Models\PickUpTrashModel.cs" />
     <Compile Include="Models\Pricing.cs" />
     <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\ViewRoleModel.cs" />
     <Compile Include="Models\Workers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -308,9 +312,15 @@
     <Content Include="Views\Pricings\Details.cshtml" />
     <Content Include="Views\Pricings\Edit.cshtml" />
     <Content Include="Views\Pricings\Index.cshtml" />
+    <Content Include="Views\MapPickupModels\Create.cshtml" />
+    <Content Include="Views\MapPickupModels\Delete.cshtml" />
+    <Content Include="Views\MapPickupModels\Details.cshtml" />
+    <Content Include="Views\MapPickupModels\Edit.cshtml" />
+    <Content Include="Views\MapPickupModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ViewRole\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -323,6 +333,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802071812034_createdcustomertable.resx">
       <DependentUpon>201802071812034_createdcustomertable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802121824218_added tables.resx">
+      <DependentUpon>201802121824218_added tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

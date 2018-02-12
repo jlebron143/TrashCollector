@@ -27,7 +27,7 @@ namespace TrashCollector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            CustomerViewModel customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -46,7 +46,7 @@ namespace TrashCollector.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userNameID,pickUpDay")] Customer customer)
+        public ActionResult Create([Bind(Include = "userNameID,pickUpDay")] CustomerViewModel customer)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace TrashCollector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            CustomerViewModel customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace TrashCollector.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userNameID,pickUpDay")] Customer customer)
+        public ActionResult Edit([Bind(Include = "userNameID,pickUpDay")] CustomerViewModel customer)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace TrashCollector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            CustomerViewModel customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -109,7 +109,7 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Customer customer = db.Customers.Find(id);
+            CustomerViewModel customer = db.Customers.Find(id);
             db.Customers.Remove(customer);
             db.SaveChanges();
             return RedirectToAction("Index");
